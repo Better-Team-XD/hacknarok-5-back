@@ -7,5 +7,5 @@ import pl.teamxd.model.MyUser;
 import java.util.UUID;
 
 @Repository
-public interface IUserRepository extends JpaRepository<MyUser, UUID> {
+public interface IMyUserRepository extends JpaRepository<MyUser, Long> {
 }
