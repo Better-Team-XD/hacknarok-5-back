@@ -20,7 +20,7 @@ public class MockData {
 
     @PostConstruct
     public void generate(){
-        userRepository.save(new MyUser());
+        userRepository.save(new MyUser("Krzysztof Nalepa","misiek.nalepa@wp.pl", "alamakota"));
 
         for (int i = 1; i <= 10; i++) {
             Location location = new Location(i, i);
@@ -29,6 +29,5 @@ public class MockData {
             placeRepository.save(place);
         }
 
-        userRepository.save(new MyUser("Krzysztof Nalepa","misiek.nalepa@wp.pl", "alamakota"));
     }
 }
