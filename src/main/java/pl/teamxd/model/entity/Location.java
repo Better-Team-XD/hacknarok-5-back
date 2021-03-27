@@ -29,7 +29,4 @@ public class Location {
 
     @NonNull
     private String street;
-
-    @NonNull
-    private String imageUrl;
 }

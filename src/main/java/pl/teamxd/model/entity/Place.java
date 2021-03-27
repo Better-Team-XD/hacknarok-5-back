@@ -19,6 +19,9 @@ public class Place {
     private String name;
 
     @NonNull
+    private String imageUrl;
+
+    @NonNull
     @ManyToOne
     private Location location;
 }
