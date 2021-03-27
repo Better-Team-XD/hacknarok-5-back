@@ -2,6 +2,7 @@ package pl.teamxd.model;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.teamxd.model.entity.MyUser;
 import pl.teamxd.repository.IUserRepository;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +14,6 @@ public class MockData {
 
     @PostConstruct
     public void generate(){
-        userRepository.save(new MyUser());
+        userRepository.save(new MyUser("misiek.nalepa@wp.pl", "alamakota"));
     }
 }

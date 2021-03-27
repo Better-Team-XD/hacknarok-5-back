@@ -1,11 +1,10 @@
-package pl.teamxd.model;
+package pl.teamxd.model.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @EqualsAndHashCode

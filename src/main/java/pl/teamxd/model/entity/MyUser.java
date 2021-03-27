@@ -1,17 +1,16 @@
-package pl.teamxd.model;
+package pl.teamxd.model.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-
 public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,6 +19,8 @@ public class MyUser {
     private String name;
 
     private String email;
+
+    private String password;
 
     @Embedded
     private Address address;
@@ -34,5 +35,10 @@ public class MyUser {
         this.name = name;
         this.email = email;
         this.address = new Address(city, street, zip);
+    }
+
+    public MyUser(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 }

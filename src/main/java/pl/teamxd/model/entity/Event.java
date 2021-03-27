@@ -1,4 +1,4 @@
-package pl.teamxd.model;
+package pl.teamxd.model.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,19 +11,19 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Entity
-@EqualsAndHashCode
 @Getter
 @Setter
-public class Location {
+@EqualsAndHashCode
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private double lon;
+    private String name;
 
-    private double lat;
+    private String date; // TODO change to date type
 
-    private String city;
+    private String hour; // TODO change to hour type
 
-    private String street;
+    private String description;
 }
