@@ -24,7 +24,12 @@ public class Location {
     @NonNull
     private double lat;
 
+    @NonNull
     private String city;
 
+    @NonNull
     private String street;
+
+    @NonNull
+    private String imageUrl;
 }

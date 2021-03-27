@@ -23,7 +23,8 @@ public class MockData {
         userRepository.save(new MyUser("Krzysztof Nalepa","misiek.nalepa@wp.pl", "alamakota"));
 
         for (int i = 1; i <= 10; i++) {
-            Location location = new Location(i, i);
+            Location location = new Location(i, i, "Kraków", "Długa", "https://www.rp.pl/apps/pbcsi.dll/storyimage/RP/20201019/PCD/310199909/AR/0/AR-310199909.jpg?imageversion=Artykul&lastModified=");
+
             var place = new Place("Place " + i, location);
             locationRepository.save(location);
             placeRepository.save(place);
