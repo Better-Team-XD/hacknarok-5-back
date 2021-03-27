@@ -3,6 +3,8 @@ package pl.teamxd.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @EqualsAndHashCode
@@ -19,6 +21,9 @@ public class Place {
     private String name;
 
     @NonNull
-    @ManyToOne
+    @Embedded
     private Location location;
+
+    @OneToMany
+    private Set<Event> events = new HashSet<>();
 }

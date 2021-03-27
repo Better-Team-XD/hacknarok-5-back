@@ -8,23 +8,24 @@ import org.springframework.stereotype.Service;
 import pl.teamxd.model.entity.Place;
 import pl.teamxd.repository.IPlaceRepository;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class PlaceService {
     private final IPlaceRepository placeRepository;
 
-    // TODO consider location
     public Page<Place> getAll(
             Integer page,
             Integer size,
-//            String name,
-//            String date,
             String sortBy,
-            Boolean asc
+            Boolean asc,
+            Optional<Double> lon,
+            Optional<Double> lat,
+            Double rad
     ) {
-//        Place examplePlace = new Place(name)
         var direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
         var pageable = PageRequest.of(page, size, direction, sortBy);
-        return placeRepository.findAll(pageable);
+        return placeRepository.findAllPlacesWithPagination(lon.orElseThrow(IllegalArgumentException::new), lat.orElseThrow(IllegalArgumentException::new), rad, pageable);
     }
 }

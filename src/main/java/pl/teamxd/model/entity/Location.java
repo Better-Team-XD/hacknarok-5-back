@@ -2,21 +2,14 @@ package pl.teamxd.model.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
-@EqualsAndHashCode
 @Getter
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Embeddable
 public class Location {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
     @NonNull
     private double lon;

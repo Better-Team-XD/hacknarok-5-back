@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.teamxd.model.entity.Location;
 import pl.teamxd.model.entity.Place;
-import pl.teamxd.repository.ILocationRepository;
 import pl.teamxd.repository.IMyUserRepository;
 import pl.teamxd.repository.IPlaceRepository;
 import pl.teamxd.model.entity.MyUser;
@@ -16,7 +15,6 @@ import javax.annotation.PostConstruct;
 public class MockData {
     private final IMyUserRepository userRepository;
     private final IPlaceRepository placeRepository;
-    private final ILocationRepository locationRepository;
 
     @PostConstruct
     public void generate(){
@@ -25,7 +23,7 @@ public class MockData {
         for (int i = 1; i <= 10; i++) {
             Location location = new Location(i, i);
             var place = new Place("Place " + i, location);
-            locationRepository.save(location);
+
             placeRepository.save(place);
         }
 

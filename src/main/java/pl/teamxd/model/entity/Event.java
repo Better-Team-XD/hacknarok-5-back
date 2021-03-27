@@ -2,10 +2,7 @@ package pl.teamxd.model.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -28,4 +25,8 @@ public class Event {
     private String hour;
 
     private String description;
+
+    @NonNull
+    @ManyToOne
+    private Place place;
 }

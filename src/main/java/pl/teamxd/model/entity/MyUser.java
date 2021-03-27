@@ -11,26 +11,26 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NonNull
     private String name;
 
+    @NonNull
     private String email;
 
+    @NonNull
     private String password;
+
+    String imageUrl;
 
     @ManyToMany
     private Set<Place> favouritePlaces = new HashSet<>();
 
     @OneToMany
     private Set<Place> myPlaces = new HashSet<>(); // places I 'own'
-
-    public MyUser(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
 }
