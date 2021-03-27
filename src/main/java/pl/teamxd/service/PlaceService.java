@@ -23,7 +23,8 @@ public class PlaceService {
             Boolean asc
     ) {
 //        Place examplePlace = new Place(name)
-        var pageable = PageRequest.of(page, size, asc ? Sort.Direction.ASC : Sort.Direction.DESC, sortBy);
+        var direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
+        var pageable = PageRequest.of(page, size, direction, sortBy);
         return placeRepository.findAll(pageable);
     }
 }
