@@ -11,4 +11,10 @@ public class HelloController {
     public String getHello(){
         return "Hello World!";
     }
+
+    @GetMapping
+    @RequestMapping("/private")
+    public String getPrivate(){
+        return "Private";
+    }
 }
