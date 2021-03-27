@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
 
     private double lon;
 

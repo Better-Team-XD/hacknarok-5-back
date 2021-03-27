@@ -14,7 +14,7 @@ import java.util.UUID;
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
 
     private String name;
 

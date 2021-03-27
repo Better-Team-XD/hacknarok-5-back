@@ -11,10 +11,11 @@ import java.util.UUID;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class User {
+
+public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
 
     private String name;
 
@@ -29,7 +30,7 @@ public class User {
     @OneToMany
     private Set<Place> myPlaces = new HashSet<>(); // places I 'own'
 
-    public User(String name, String email, String city, String street, String zip) {
+    public MyUser(String name, String email, String city, String street, String zip) {
         this.name = name;
         this.email = email;
         this.address = new Address(city, street, zip);
