@@ -2,9 +2,12 @@ package pl.teamxd.model;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.teamxd.model.entity.Location;
+import pl.teamxd.model.entity.Place;
 import pl.teamxd.repository.ILocationRepository;
 import pl.teamxd.repository.IMyUserRepository;
 import pl.teamxd.repository.IPlaceRepository;
+import pl.teamxd.model.entity.MyUser;
 
 import javax.annotation.PostConstruct;
 
@@ -26,5 +29,6 @@ public class MockData {
             placeRepository.save(place);
         }
 
+        userRepository.save(new MyUser("Krzysztof Nalepa","misiek.nalepa@wp.pl", "alamakota"));
     }
 }

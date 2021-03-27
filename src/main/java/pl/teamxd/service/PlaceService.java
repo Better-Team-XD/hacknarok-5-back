@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pl.teamxd.model.Place;
+import pl.teamxd.model.entity.Place;
 import pl.teamxd.repository.IPlaceRepository;
 
 @Service
