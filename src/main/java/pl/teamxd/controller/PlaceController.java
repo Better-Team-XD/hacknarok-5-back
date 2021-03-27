@@ -22,7 +22,7 @@ public class PlaceController {
 
     @GetMapping
     public ResponseEntity<StandardResponse> getAll (
-            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
 //            @RequestParam(defaultValue = "") String name,
 //            @RequestParam(defaultValue = "") String date,
