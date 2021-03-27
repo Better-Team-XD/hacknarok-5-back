@@ -1,8 +1,6 @@
 package pl.teamxd.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,13 +8,17 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @Getter
 @Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NonNull
     private String name;
 
+    @NonNull
     @ManyToOne
     private Location location;
 }

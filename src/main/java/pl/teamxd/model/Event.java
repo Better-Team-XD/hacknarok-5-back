@@ -1,8 +1,6 @@
 package pl.teamxd.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,15 +11,20 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @EqualsAndHashCode
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NonNull
     private String name;
 
+    @NonNull
     private String date; // TODO change to date type
 
+    @NonNull
     private String hour; // TODO change to hour type
 
     private String description;
