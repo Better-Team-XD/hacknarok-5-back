@@ -22,10 +22,10 @@ public class Event {
     private String name;
 
     @NonNull
-    private String date; // TODO change to date type
+    private String date;
 
     @NonNull
-    private String hour; // TODO change to hour type
+    private String hour;
 
     private String description;
 }
