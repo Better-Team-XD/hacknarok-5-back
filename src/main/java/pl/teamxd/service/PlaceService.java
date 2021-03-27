@@ -2,13 +2,16 @@ package pl.teamxd.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.teamxd.model.entity.Place;
 import pl.teamxd.repository.IPlaceRepository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,10 +25,32 @@ public class PlaceService {
             Boolean asc,
             Optional<Double> lon,
             Optional<Double> lat,
-            Double rad
+            Double radius
     ) {
         var direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
         var pageable = PageRequest.of(page, size, direction, sortBy);
-        return placeRepository.findAllPlacesWithPagination(lon.orElseThrow(IllegalArgumentException::new), lat.orElseThrow(IllegalArgumentException::new), rad, pageable);
+        Double longitude = lon.orElseThrow(IllegalAccessError::new);
+        Double latitude = lat.orElseThrow(IllegalAccessError::new);
+
+        List<Place> places = placeRepository.findAll();
+        // TODO move to sql query if only possible
+        List<Place> filteredPlaces = places.stream()
+                .filter(
+                        place -> {
+                            double theta = Math.abs(longitude - place.getLocation().getLon());
+                            double dist = Math.sin(Math.toRadians(latitude)) * Math.sin(Math.toRadians(place.getLocation().getLat())) + Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(place.getLocation().getLat())) * Math.cos(Math.toRadians(theta));
+                            dist = Math.acos(dist);
+                            dist = Math.toDegrees(dist);
+                            dist = dist * 60 * 1.1515;
+                            dist = dist * 1.609344;
+                            return dist <= radius;
+                        }
+                )
+                .collect(Collectors.toList());
+
+        int start = (int)pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), filteredPlaces.size());
+
+        return new PageImpl<>(places.subList(start, end), pageable, places.size());
     }
 }
