@@ -1,5 +1,6 @@
 package pl.teamxd.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Event {
@@ -15,18 +16,24 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NonNull
     private String name;
 
-    @NonNull
     private String date;
 
-    @NonNull
     private String hour;
 
     private String description;
 
     @NonNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonBackReference
     private Place place;
+
+    public Event(String name, String date, String hour, Place place) {
+        this.name = name;
+        this.date = date;
+        this.hour = hour;
+        this.place = place;
+        place.addEvent(this);
+    }
 }

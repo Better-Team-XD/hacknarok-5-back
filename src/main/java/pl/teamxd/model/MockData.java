@@ -2,8 +2,10 @@ package pl.teamxd.model;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.teamxd.model.entity.Event;
 import pl.teamxd.model.entity.Location;
 import pl.teamxd.model.entity.Place;
+import pl.teamxd.repository.IEventRepository;
 import pl.teamxd.repository.IMyUserRepository;
 import pl.teamxd.repository.IPlaceRepository;
 import pl.teamxd.model.entity.MyUser;
@@ -15,6 +17,7 @@ import javax.annotation.PostConstruct;
 public class MockData {
     private final IMyUserRepository userRepository;
     private final IPlaceRepository placeRepository;
+    private final IEventRepository eventRepository;
 
     @PostConstruct
     public void generate(){
@@ -23,8 +26,14 @@ public class MockData {
         for (int i = 1; i <= 10; i++) {
             Location location = new Location((double)i/10, (double)i/10);
             var place = new Place("Place " + i, location);
-
+            var event = new Event("Event " + i, i+"-"+i+"-"+"2021", "12:00", place);
+            place.addEvent(event);
+            eventRepository.save(event);
             placeRepository.save(place);
+
+
+
+
         }
 
     }
