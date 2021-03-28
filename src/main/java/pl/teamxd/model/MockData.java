@@ -23,17 +23,13 @@ public class MockData {
     public void generate(){
         userRepository.save(new MyUser("Krzysztof Nalepa","misiek.nalepa@wp.pl", "alamakota"));
 
-        for (int i = 1; i <= 10; i++) {
-            Location location = new Location((double)i/10, (double)i/10);
-            var place = new Place("Place " + i, location);
+        for (int i = 1; i <= 100; i++) {
+            Location location = new Location((double)i/10, (double)i/10, "Kraków", "Długa");
+            var place = new Place("Place " + i, "https://www.rp.pl/apps/pbcsi.dll/storyimage/RP/20201019/PCD/310199909/AR/0/AR-310199909.jpg?imageversion=Artykul&lastModified=", location);
             var event = new Event("Event " + i, i+"-"+i+"-"+"2021", "12:00", place);
             place.addEvent(event);
             eventRepository.save(event);
             placeRepository.save(place);
-
-
-
-
         }
 
     }

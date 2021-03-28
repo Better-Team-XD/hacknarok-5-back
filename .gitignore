@@ -1,6 +1,5 @@
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -31,7 +30,6 @@ build/
 
 ### VS Code ###
 .vscode/
-/.mvn/
 
 *.java.hsp
 *.sonarj
@@ -75,5 +73,3 @@ out
 test-output
 atlassian-ide-plugin.xml
 .gradletasknamecache
-/Dockerfile
-/.mvn/
