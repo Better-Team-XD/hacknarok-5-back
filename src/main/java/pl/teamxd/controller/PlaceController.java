@@ -8,8 +8,8 @@ import pl.teamxd.model.response.StandardResponse;
 import pl.teamxd.model.response.Type;
 import pl.teamxd.service.PlaceService;
 
-import java.time.LocalDate;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/v1/places")
@@ -22,10 +22,11 @@ public class PlaceController {
     public ResponseEntity<StandardResponse> getAll (
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
-//            @RequestParam(defaultValue = "") String name,
-//            @RequestParam(defaultValue = "") String date,
             @RequestParam(defaultValue = "name") String sortBy,
-            @RequestParam(defaultValue = "true") Boolean asc
+            @RequestParam(defaultValue = "true") Boolean asc,
+            @RequestParam Optional<Double> lon,
+            @RequestParam Optional<Double> lat,
+            @RequestParam(defaultValue = "1") double rad // radius in kilometers
     ) {
         try {
             return ResponseEntity.
@@ -33,7 +34,7 @@ public class PlaceController {
                     .body(new StandardResponse(
                             Type.SUCCESS,
                             "Data queried",
-                            placeService.getAll(page, size, sortBy, asc)
+                            placeService.getAll(page, size, sortBy, asc, lon, lat, rad)
                         )
                     );
 

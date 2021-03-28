@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.teamxd.model.entity.Event;
 
 @Repository
-interface IEventRepository extends JpaRepository<Event, Long> {
+public interface IEventRepository extends JpaRepository<Event, Long> {
 }
