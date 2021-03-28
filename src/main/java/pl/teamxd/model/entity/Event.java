@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-//@EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Event {

@@ -17,6 +17,8 @@ public class PlaceResponse {
 
     private String name;
 
+    private String imageUrl;
+
     private Location location;
 
     private String description;

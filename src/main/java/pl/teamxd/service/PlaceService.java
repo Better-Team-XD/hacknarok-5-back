@@ -40,6 +40,7 @@ public class PlaceService {
                 .map(place -> new PlaceResponse(
                         place.getId(),
                         place.getName(),
+                        place.getImageUrl(),
                         place.getLocation(),
                         place.getDescription(),
                         calculateDistance(place, longitude, latitude),
